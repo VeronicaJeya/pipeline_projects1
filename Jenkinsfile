@@ -1,19 +1,13 @@
 pipeline {
     agent any
+
     stages {
-        stage('---clean---') {
-            steps {
-                sh "/opt/maven/bin/mvn clean"
+        stage('Hello') {
+            environment {
+                jeya_id = credentials('secrettext1')
             }
-        }
-        stage('--test--') {
             steps {
-                sh "/opt/maven/bin/mvn test"
-            }
-        }
-        stage('--package--') {
-            steps {
-                sh "/opt/maven/bin/mvn package"
+                echo "credential is ${jeya_id} "
             }
         }
     }
